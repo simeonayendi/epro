@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+{% block content %}
+{% csrf_token %}
+{{ form.as_p }}
+<form method="POST" action=".">
+	{% csrf_token %}
+	<input type="submit" name="Submit">
+</form>
+{% endblock %}
+</body>
+</html>

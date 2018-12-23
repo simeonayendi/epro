@@ -1,0 +1,84 @@
+{% extends 'home/base.html' %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Post Detail</title>
+</head>
+<body>
+{% block content %}
+<br />
+<br />
+<div class="container">
+	<div class="row">		
+			<div class="col-md-9" style="border:1px solid #e8e2e2;background-color: #ffff">
+					<h1>{{ post.title }}</h1>
+				<small>
+					<p >Posted by {{ post.author|capfirst }} on {{ post.created }} {{ comments.count }} | Comment{{ comments|pluralize }}</p>
+					<p>Share with friends</p>
+					<i class="fa fa-facebook"></i><i class="fa fa-twitter"></i><i class="fa fa-instagram"></i><br>
+						<p class="meta badge badge-success">{{ post.tags.all|join:", " }} </p>
+				</small>
+			<div class="img">
+				<img src="{{ post.image.url }}" width="100%" class="img-responsive" />
+			</div>
+			<p>{{ post.content }}</p>		
+</div>
+<div class="col-md-3">
+<h4>Latest News</h4>
+			<div class="content">
+				<hr>
+			{% for post in posts %}
+			<img src="{{ post.image.url }}" width="100%" class="img-responsive" />
+			<a href="{{ post.get_absolute_url }} "><p> {{ post.title }}</p> </a>
+				<hr>
+			{% endfor %}
+
+			</div>
+			<a href="{% url 'blog:post_list' %}"> <button class="btn btn-primary" >See All News</button></a>
+	</div>
+</div>
+<br />
+<br />
+
+{{ comments.count }} Comment{{ comments|pluralize }}
+	{% for comment in comments %}
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+ 				<div class="card mb-4 shadow-sm">       
+          <div class="card-body">
+            <h4 class="card-title pricing-card-title">{{ comment.content }}</h4>
+          </div>
+          <div class="card-header">
+            <h4 class="my-0 font-weight-normal right">{{ comment.user|capfirst }}</h4>
+          </div>
+      </div>
+  </div>
+</div>
+</div>
+
+ 
+      
+
+ {% endfor %} 
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-6">
+{{ form|crispy }}
+<form method="post">
+	{% csrf_token %}
+	{{ comment_form.as_p }}
+	{% if request.user.is_authenticated %}
+	<input type="Submit" value="submit" class="btn btn-outline-success">
+	{% else %}
+	<input type="Submit" value="submit" class="btn btn-outline-success" disabled>
+	<p>Login To comment</p>
+	{% endif %}
+</form>
+</div>
+</div>
+</div>
+ {% endblock %}     
+</body>
+</html>

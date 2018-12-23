@@ -1,0 +1,18 @@
+{% extends 'home/base.html' %}
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}{{ block.super }}Sign Up{% endblock %}
+
+{% block form_heading %}Signing Up is Free{% endblock %}
+  
+<form method="POST" >
+	
+{% csrf_token %}
+	{{ form.as_p }}
+<input type="Submit" name="submit" class="btn btn-success">
+</form>
+
+
+{% endblock %}

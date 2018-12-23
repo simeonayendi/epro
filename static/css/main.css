@@ -1,0 +1,56 @@
+body {
+	background-color: #fff;
+}
+
+.btn {
+	
+}
+.navbar-content {
+	margin-left: 50px;
+	margin-right: 50px;
+}
+h3{
+	font-family:Aharoni;
+	color: #3486d8;
+}
+h4 {
+	font-family: cambria;
+	color: #3486d8;
+}
+a,
+a:focus,
+a:hover {
+  color: #3486d8;
+}
+
+/* Custom default button */
+.btn-secondary,
+.btn-secondary:hover,
+.btn-secondary:focus {
+  color: #333;
+  text-shadow: none; /* Prevent inheritance from `body` */
+  background-color: #fff;
+  border: .05rem solid #fff;
+}
+h1{
+	font-size: 60px;
+}
+.title{
+	font-size:20px;
+}
+.article {
+	border:1px solid blue;
+
+}
+.trend-img {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+
+}
+.img-wrapper {
+	width: 150px;
+	
+	padding-right: 25px;
+	padding-bottom: 10px;
+}

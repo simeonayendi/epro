@@ -1,0 +1,112 @@
+{% extends 'home/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>New Python Page</title>
+	
+</head>
+<body>
+{% block content %}
+<br />
+<br />
+<div class="container">
+	<h3>News And Updates</h3>
+	<hr>
+	<div class="row">
+		<div class="col-md-4">
+			<h4>Latest News</h4>
+			<div class="content">
+				<hr>
+			{% for post in posts %}
+			<a href="{{ post.get_absolute_url }} "><p class="title"> {{ post.title }}</p> </a>
+				<hr>
+			{% endfor %}
+
+			</div>
+			<a href="{% url 'blog:post_list' %}"> <button class="btn btn-primary" >See All News</button></a>
+			<p>Do you have stories or news from your School? Tell students nationwide;</p>
+			<button class="btn btn-primary">Submit a report</button>
+
+
+	</div>
+		<div class="col-md-5">
+			<div class="trending">
+				<h4>Trending</h4>	
+				<hr>
+			</div>
+			<div class="article">
+				<div class="img-wrapper">
+				<img src="{% static 'img/images/koala.jpg' %} " class="trend-img">
+			</div>
+				<p>This is the news i have to write today</p>
+				
+			</div>
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+   	   		<p>Stay Updated</p>
+      		<div class="social-media">
+	      		<a href="#"> <i class="fa fa-phone"></i> <p>Like us on Facebook</p></a>
+				<a href="#"> <i class="fa fa-facebook-square fa-2x"></i> <p>Like us on Facebook</p></a>
+				<a href="#"> <i class="fa fa-twitter-square fa-2x"></i> <p>Follow us on Twitter</p></a>
+				<a href="#"> <i class="fa fa-instagram fa-2x"></i> <p>Like us on Instagram</p></a>
+		</div>
+		</div>
+		<div class="col-md-3">
+		<h4>Student Forums</h4>
+		<hr>
+		{% for obj in group %}
+			<a href="{{ obj.get_absolute_url }} "><p class="title">{{ obj.title }}</p></a>
+			<hr>
+		{% endfor %}
+		<button class="btn btn-primary" >Full List Of Forum</button>
+</div>
+<div class="container">
+	<h4>Study Official Past Questions</h4>
+	<hr>
+	<div class="row">
+		<div class="col-md-12">
+			<button class="btn btn-primary">Practice Exam Past Questions</button>
+		<button class="btn btn-primary lg">JAMB Syllabus</button>
+		<button class="btn btn-primary ">JAMB Brochure</button>
+		</div>
+		
+	</div>
+</div>
+<br />
+<br />
+<div class="container">
+	<h4>Upcoming Event</h4>
+	<hr>
+	<div class="row">
+		{% for e in event %}
+		<div class="col-md-3">
+
+			<div style="border: 1px solid #3486d8;border-radius: 10px">	
+
+			<img class="card-img-right flex-auto d-none d-lg-block" src="{{ e.image.url  }} " width="100px" height="100px" alt="Card image cap">
+			<p>{{ e.title }}</p>
+		</div>
+		</div>
+		<br />
+		{% endfor %}
+		</div>
+
+
+	</div>
+</div>
+
+
+
+
+
+
+
+
+{% endblock %}
+</body>
+</html>
